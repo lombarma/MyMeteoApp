@@ -1,18 +1,70 @@
 <main>
-  <section class="filters">
-    <form [formGroup]="weatherFiltersForm">
-        <input type="checkbox" id="humidity" formControlName="humidity"/>
-        <label for="humidity">Humidité</label>
-    </form>
-  </section>
+  @if(isLoaded){
+    <section class="filters">
+      <form [formGroup]="weatherFiltersForm">
+          <input type="checkbox" id="humidity" formControlName="humidity"/>
+          <label for="humidity">Humidité</label>
 
-  <section class="weather">
-    <h1>Météo pour {{ city }}</h1>
-    <p class="big">{{ weather.temperature }}°C</p>
-    @if (weather.humidity) {
-      <p>Humidité : {{ weather.humidity }}%</p>
-    }
-  </section>
+          <input type="checkbox" id="apparentTemperature" formControlName="apparentTemperature" />
+          <label for="apparentTemperature">Température ressentie</label>
+
+          <input type="checkbox" id="precipitation" formControlName="precipitation" />
+          <label for="precipitation">Précipitations</label>
+
+          <input type="checkbox" id="rain" formControlName="rain" />
+          <label for="rain">Pluie</label>
+
+          <input type="checkbox" id="windSpeed" formControlName="windSpeed" />
+          <label for="windSpeed">Vitesse du vent</label>
+      </form>
+    </section>
+
+    <section class="weather">
+      <h1>Météo pour {{ city }}</h1>
+      <p class="big">{{ weather.temperature }}°C</p>
+
+      <div class="grid">
+        @if (weather.humidity) {
+          <div class="card">
+            <h4> Humidité </h4>
+            <p> {{ weather.humidity }}% </p>
+          </div>
+
+        }
+        @if (weather.apparentTemperature) {
+          <div class="card">
+            <h4> Température ressentie </h4>
+            <p> {{ weather.apparentTemperature }} °C</p>
+          </div>
+        }
+
+        @if (weather.rain || weather.rain == 0) {
+          <div class="card">
+            <h4> Pluie </h4>
+            <p> {{ weather.rain }} </p>
+          </div>
+        }
+
+        @if (weather.precipitation || weather.precipitation == 0) {
+          <div class="card">
+            <h4> Précipitations </h4>
+            <p> {{ weather.precipitation }} </p>
+          </div>
+        }
+
+        @if (weather.windSpeed) {
+          <div class="card">
+            <h4> Vitesse du vent </h4>
+            <p> {{ weather.windSpeed }} km/h</p>
+          </div>
+        }
+      </div>
+
+    </section>
+  }
+  @else{
+    <h1>Chargement de la page en cours</h1>
+  }
 </main>
 
 <router-outlet></router-outlet>

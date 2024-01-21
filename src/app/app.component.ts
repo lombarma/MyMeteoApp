@@ -26,6 +26,8 @@ export class AppComponent implements OnInit, OnDestroy {
 
   onDestroy$ = new Subject<void>();
 
+  isLoaded: boolean = false;
+
   ngOnInit(): void {
     this.buildFiltersForm();
     this.watchForWeatherFilters();
@@ -51,6 +53,7 @@ export class AppComponent implements OnInit, OnDestroy {
         ).subscribe(weather => {
           this.city = this.longAndLatAndCity.city;
           this.weather = weather;
+          this.isLoaded = true;
         })
   }
 
