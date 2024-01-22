@@ -5,6 +5,8 @@ import {HttpClient, HttpClientModule} from "@angular/common/http";
 import {JenAiAucuneIdee, LongAndLatAndCity, SpecsOnCity, WeatherFilters, WeatherService} from "./weather.service";
 import {startWith, Subject, switchMap, takeUntil, tap} from "rxjs";
 import {AbstractControl, FormControl, FormGroup, ReactiveFormsModule} from "@angular/forms";
+import {MatDialog} from "@angular/material/dialog";
+import {HumidityModalComponent} from "./humidity-modal/humidity-modal.component";
 
 // TODO : Pipe Celsius/Farenheit
 // TODO : revoir le FormGroup
@@ -13,9 +15,10 @@ import {AbstractControl, FormControl, FormGroup, ReactiveFormsModule} from "@ang
   standalone: true,
   imports: [CommonModule, RouterOutlet, ReactiveFormsModule],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrl: './app.component.css',
 })
 export class AppComponent implements OnInit, OnDestroy {
+  constructor(public dialog: MatDialog) {}
   city!: string;
   weather!: SpecsOnCity;
   longAndLatAndCity!: LongAndLatAndCity;
@@ -60,6 +63,10 @@ export class AppComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.onDestroy$.next();
     this.onDestroy$.complete();
+  }
+
+  openDialog(){
+    this.dialog.open(HumidityModalComponent);
   }
 
 }

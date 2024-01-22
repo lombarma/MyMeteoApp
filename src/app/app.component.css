@@ -1,5 +1,50 @@
-.big {
-  font-size: 3rem;
+.city-and-temperature {
+  display: flex;
+  justify-content: center;
+
+}
+.rounded-rectangle {
+  border: 1px solid black;
+  border-radius: 250px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 50%;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  transition: all 0.5s ease-in-out;
+  margin-bottom: 20px;
+}
+
+.wi {
+  border: 1px solid black;
+  border-radius: 250px;
+  font-size: 50px;
+  padding: 30px;
+  margin-left: 50px;
+  margin-right: auto;
+  width: 10%;
+  background-color: white;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.rounded-rectangle .text-group {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.false-elt-right {
+  visibility: hidden;
+  margin-right: 50px;
+  margin-left: auto;
+  width: 20%;
+}
+
+.rounded-rectangle:hover {
+  transform: scale(1.05);
 }
 
 .grid {
@@ -22,6 +67,7 @@
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
   transition: all 0.5s ease-in-out;
   margin: 10px;
+  background-color: white;
 }
 
 .card:hover {

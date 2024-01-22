@@ -20,12 +20,27 @@
     </section>
 
     <section class="weather">
-      <h1>Météo pour {{ city }}</h1>
-      <p class="big">{{ weather.temperature }}°C</p>
+      <div class="meteo-text">
+        <h1>
+          Météo
+        </h1>
+      </div>
+      <div class="city-and-temperature">
+        <div class="rounded-rectangle">
+          <i class="wi wi-day-cloudy"></i>
+          <div class="text-group">
+            <h1>{{ city }}</h1>
+            <h1>{{ weather.temperature }} °C</h1>
+          </div>
+          <div class="false-elt-right">
+            <i class="wi wi-day-cloudy"></i>
+          </div>
+        </div>
+      </div>
 
       <div class="grid">
         @if (weather.humidity) {
-          <div class="card">
+          <div class="card" (click)="openDialog()">
             <h4> Humidité </h4>
             <p> {{ weather.humidity }}% </p>
           </div>

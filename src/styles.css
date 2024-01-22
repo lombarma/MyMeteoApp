@@ -1,4 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
 body {
   font-family: 'IBM Sans Plex', sans-serif;
+  background: linear-gradient(to left, rgba(0,230,255,1), rgba(29,99,253,1));
 }
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
