@@ -1,15 +1,10 @@
 import {Component, inject, OnDestroy, OnInit} from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { RouterOutlet } from '@angular/router';
-import {HttpClient, HttpClientModule} from "@angular/common/http";
-import {JenAiAucuneIdee, LongAndLatAndCity, SpecsOnCity, WeatherFilters, WeatherService} from "./weather.service";
+import {CommonModule} from '@angular/common';
+import {RouterOutlet} from '@angular/router';
+import {JenAiAucuneIdee, LongAndLatAndCity, SpecsOnCity, WeatherService} from "./weather.service";
 import {startWith, Subject, switchMap, takeUntil, tap} from "rxjs";
-import {AbstractControl, FormControl, FormGroup, ReactiveFormsModule} from "@angular/forms";
-import {MatDialog} from "@angular/material/dialog";
-import {HumidityModalComponent} from "./humidity-modal/humidity-modal.component";
+import {FormControl, FormGroup, ReactiveFormsModule} from "@angular/forms";
 
-// TODO : Pipe Celsius/Farenheit
-// TODO : revoir le FormGroup
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -18,7 +13,7 @@ import {HumidityModalComponent} from "./humidity-modal/humidity-modal.component"
   styleUrl: './app.component.css',
 })
 export class AppComponent implements OnInit, OnDestroy {
-  constructor(public dialog: MatDialog) {}
+  constructor() {}
   city!: string;
   weather!: SpecsOnCity;
   longAndLatAndCity!: LongAndLatAndCity;
@@ -63,10 +58,6 @@ export class AppComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.onDestroy$.next();
     this.onDestroy$.complete();
-  }
-
-  openDialog(){
-    this.dialog.open(HumidityModalComponent);
   }
 
 }

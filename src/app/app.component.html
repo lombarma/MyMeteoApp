@@ -1,7 +1,22 @@
 <main>
   @if(isLoaded){
-    <section class="filters">
-      <form [formGroup]="weatherFiltersForm">
+    <section class="weather">
+      <div class="meteo-text">
+        <h1>
+          Météo à Paris
+        </h1>
+      </div>
+      <div class="city-and-temperature">
+        <div class="rounded-rectangle">
+          <div class="text-group">
+            <h1 class="city">{{ city }}</h1>
+            <h1>{{ weather.temperature }} °C</h1>
+          </div>
+        </div>
+      </div>
+
+      <section class="filters">
+        <form [formGroup]="weatherFiltersForm">
           <input type="checkbox" id="humidity" formControlName="humidity"/>
           <label for="humidity">Humidité</label>
 
@@ -16,31 +31,12 @@
 
           <input type="checkbox" id="windSpeed" formControlName="windSpeed" />
           <label for="windSpeed">Vitesse du vent</label>
-      </form>
-    </section>
-
-    <section class="weather">
-      <div class="meteo-text">
-        <h1>
-          Météo
-        </h1>
-      </div>
-      <div class="city-and-temperature">
-        <div class="rounded-rectangle">
-          <i class="wi wi-day-cloudy"></i>
-          <div class="text-group">
-            <h1>{{ city }}</h1>
-            <h1>{{ weather.temperature }} °C</h1>
-          </div>
-          <div class="false-elt-right">
-            <i class="wi wi-day-cloudy"></i>
-          </div>
-        </div>
-      </div>
+        </form>
+      </section>
 
       <div class="grid">
         @if (weather.humidity) {
-          <div class="card" (click)="openDialog()">
+          <div class="card">
             <h4> Humidité </h4>
             <p> {{ weather.humidity }}% </p>
           </div>
